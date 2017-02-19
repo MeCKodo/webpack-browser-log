@@ -1,6 +1,6 @@
-const express = require('express');
-const app = new express();
-const webpack = require('webpack');
+var express = require('express');
+var app = new express();
+var webpack = require('webpack');
 
 function WebpackBrowserLog(webpackConfig, options) {
 	this.init(webpackConfig,options)
