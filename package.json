@@ -1,6 +1,6 @@
 {
   "name": "webpack-browser-log",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "friendly log errors on your browser",
   "main": "index.js",
   "scripts": {
