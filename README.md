@@ -1,4 +1,5 @@
 ## webpack-broswer-log
+[![CircleCI](https://img.shields.io/circleci/project/github/MeCKodo/webpack-browser-log.svg)](https://circleci.com/gh/MeCKodo/webpack-browser-log)
 
 > Based on webpack-hot-middleware and webpack-dev-middleware friendly log errors on your browser
 
