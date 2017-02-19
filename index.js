@@ -11,10 +11,14 @@ WebpackBrowserLog.prototype = {
 	init : function (webpackConfig, options) {
 		
 		var compiler = webpack(webpackConfig);
+		var devMiddleware = this.devMiddleware(compiler, options.devMiddleware)
 		
-		app.use(this.devMiddleware(compiler, options.devMiddleware));
+		var hotMiddleware = this.hotMiddleware(compiler, options.hotMiddleware)
+		app.use(devMiddleware);
 
-		app.use(this.hotMiddleware(compiler, options.hotMiddleware));
+		app.use(hotMiddleware);
+		
+		devMiddleware.waitUntilValid(options.waitUntilValid || function() {});
 		
 		app.listen(3000, function (err) {
 			if (err) return console.log(err)
