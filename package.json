@@ -1,0 +1,29 @@
+{
+  "name": "webpack-browser-log",
+  "version": "0.0.1",
+  "description": "friendly log errors on your browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeCKodo/webpack-broswer-log.git"
+  },
+  "keywords": [
+    "webpack2",
+    "webpack-hot-middleware"
+  ],
+  "author": "二哲",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeCKodo/webpack-broswer-log/issues"
+  },
+  "homepage": "https://github.com/MeCKodo/webpack-broswer-log#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-hot-middleware": "^2.17.0"
+  }
+}
