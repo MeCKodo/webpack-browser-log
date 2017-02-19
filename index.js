@@ -20,7 +20,7 @@ WebpackBrowserLog.prototype = {
 		
 		devMiddleware.waitUntilValid(options.waitUntilValid || function() {});
 		
-		app.listen(3000, function (err) {
+		app.listen(options.port || 3000, function (err) {
 			if (err) return console.log(err)
 			
 		});
