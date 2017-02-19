@@ -1,36 +1,37 @@
-var express = require('express');
-var app = new express();
+var Express = require('express');
 var webpack = require('webpack');
 
+var app = new Express();
+
 function WebpackBrowserLog(webpackConfig, options) {
-	this.init(webpackConfig,options)
+	this.init(webpackConfig, options);
 }
 
 WebpackBrowserLog.prototype = {
 	constructor: WebpackBrowserLog,
-	init : function (webpackConfig, options) {
-		
+	init: function init(webpackConfig, options) {
 		var compiler = webpack(webpackConfig);
-		var devMiddleware = this.devMiddleware(compiler, options.devMiddleware)
+		var devMiddleware = this.devMiddleware(compiler, options.devMiddleware);
 		
-		var hotMiddleware = this.hotMiddleware(compiler, options.hotMiddleware)
+		var hotMiddleware = this.hotMiddleware(compiler, options.hotMiddleware);
 		app.use(devMiddleware);
-
+		
 		app.use(hotMiddleware);
 		
-		devMiddleware.waitUntilValid(options.waitUntilValid || function() {});
+		devMiddleware.waitUntilValid(options.waitUntilValid || function waitUntiValid() {});
 		
-		app.listen(options.port || 3000, function (err) {
-			if (err) return console.log(err)
-			
+		app.listen(options.port || 3000, function error(err) {
+			if (err) {
+				console.log(err);
+			}
 		});
 	},
-	devMiddleware: function (compiler, devOptions) {
+	devMiddleware: function devMiddleware(compiler, devOptions) {
 		return require('webpack-dev-middleware')(compiler, devOptions);
 	},
-	hotMiddleware: function (compiler, hotOptions) {
+	hotMiddleware: function hotMiddleware(compiler, hotOptions) {
 		return require('webpack-hot-middleware')(compiler, hotOptions);
-	}
+	},
 };
 
 module.exports = WebpackBrowserLog;
