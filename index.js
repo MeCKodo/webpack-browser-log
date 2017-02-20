@@ -8,8 +8,8 @@ function WebpackBrowserLog(webpackConfig, options) {
 }
 
 WebpackBrowserLog.prototype = {
-	constructor: WebpackBrowserLog,
-	init: function init(webpackConfig, options) {
+  constructor: WebpackBrowserLog,
+  init: function init(webpackConfig, options) {
 		var compiler = webpack(webpackConfig);
 		var devMiddleware = this.devMiddleware(compiler, options.devMiddleware);
 		
