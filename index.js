@@ -1,7 +1,7 @@
-var Express = require('express');
+var express = require('express');
 var webpack = require('webpack');
 
-var app = new Express();
+var app = express();
 
 function WebpackBrowserLog(webpackConfig, options) {
 	this.init(webpackConfig, options);
