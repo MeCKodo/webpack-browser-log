@@ -1,5 +1,5 @@
 ## webpack-broswer-log
-[![CircleCI](https://img.shields.io/circleci/project/github/MeCKodo/webpack-browser-log.svg)](https://circleci.com/gh/MeCKodo/webpack-browser-log)[![npm](https://img.shields.io/npm/v/webpack-browser-log.svg)](https://www.npmjs.com/package/webpack-browser-log)[![npm](https://img.shields.io/npm/dt/webpack-browser-log.svg)](https://www.npmjs.com/package/webpack-browser-log)
+[![CircleCI](https://img.shields.io/circleci/project/github/MeCKodo/webpack-browser-log.svg)](https://circleci.com/gh/MeCKodo/webpack-browser-log) [![npm](https://img.shields.io/npm/v/webpack-browser-log.svg)](https://www.npmjs.com/package/webpack-browser-log) [![npm](https://img.shields.io/npm/dt/webpack-browser-log.svg)](https://www.npmjs.com/package/webpack-browser-log)
 
 > Based on webpack-hot-middleware and webpack-dev-middleware friendly log errors on your browser
 
