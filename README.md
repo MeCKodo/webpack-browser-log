@@ -1,14 +1,33 @@
 ## webpack-broswer-log
 [![CircleCI](https://img.shields.io/circleci/project/github/MeCKodo/webpack-browser-log.svg)](https://circleci.com/gh/MeCKodo/webpack-browser-log) [![npm](https://img.shields.io/npm/v/webpack-browser-log.svg)](https://www.npmjs.com/package/webpack-browser-log) [![npm](https://img.shields.io/npm/dt/webpack-browser-log.svg)](https://www.npmjs.com/package/webpack-browser-log)
 
-> Based on webpack-hot-middleware and webpack-dev-middleware friendly log errors on your browser
+> Based on webpack-hot-middleware and webpack-dev-middleware friendly log errors on your browser.
 
 ### Installing
 
 > npm i webpack-browser-log --save-dev;
 
-### Example
+### Usage
 
+First, add `webpack-hot-middleware/client` into the entry array.Such as
+```javascript
+entry: {
+		index: ['webpack-hot-middleware/client?reload=true','./src/index.js'],
+		vendor: ['vue', 'vue-router', 'vuex'],
+	},
+```
+
+Next, add the following plugins to the plugins array:
+```javascript
+plugins : [
+	new webpack.HotModuleReplacementPlugin(),
+	new webpack.NoEmitOnErrorsPlugin(),
+	//...
+]
+```
+
+
+Now, edit your dev-client.js
 ```javascript
 // build/dev-client.js
 
@@ -18,21 +37,7 @@ const webpackDev = require('./webpack.dev'); // webpack dev config
 const base = require('./webpack.base'); // webpack base config
 const webpackConfig = merge(base,webpackDev); // merge base and dev
 
-const uri = 'http://localhost:' + 3000;
-
-new webpackBrowserLog(webpackConfig, {
-	port : 3001,
-	devMiddleware : {
-		publicPath: webpackConfig.output.publicPath,
-		quiet: true
-	},
-	hotMiddleware : {
-		log: () => {}
-	},
-	waitUntilValid : function () {
-		console.log(`> Listening at ${uri}\n`)
-	}
-});
+new webpackBrowserLog(webpackConfig); // magic
 
 ```
 
@@ -40,12 +45,26 @@ new webpackBrowserLog(webpackConfig, {
 $ node build/dev-client.js
 ```
 
-> Open your browser on http://localhost:3001. Let's coding
+> Open your browser on http://localhost:3000. Let's coding
 
 ### Config
 
-todo 0.0.6版本 设置默认参数
+Because of based on [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware#usage) and [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware#config). You can read their doc directly.Enjoy yourself
 
+```javascript
+new webpackBrowserLog(webpackConfig, {
+	port : 3000, // default
+	devMiddleware : { // default
+		publicPath: webpackConfig.output.publicPath,
+		quiet: true
+	},
+	hotMiddleware : { // default
+		log: () => {}
+	},
+	waitUntilValid : function () { } // default
+});
+
+```
 
 ### Contributing
 
@@ -58,6 +77,3 @@ todo 0.0.6版本 设置默认参数
 4.Push to the branch: git push origin my-new-feature
 
 5.Submit a pull request :D
-
-
-

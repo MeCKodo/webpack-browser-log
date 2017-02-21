@@ -1,6 +1,6 @@
 {
   "name": "webpack-browser-log",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "friendly log errors on your browser",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "webpack-hot-middleware"
   ],
   "author": "二哲",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MeCKodo/webpack-broswer-log/issues"
   },
