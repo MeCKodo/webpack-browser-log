@@ -26,7 +26,6 @@ plugins : [
 ]
 ```
 
-
 Now, edit your dev-client.js
 ```javascript
 // build/dev-client.js
@@ -46,6 +45,10 @@ $ node build/dev-client.js
 ```
 
 > Open your browser on http://localhost:3000. Let's coding
+
+
+[gif](./webpack-browser-log.gif)
+
 
 ### Config
 
