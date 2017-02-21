@@ -30,13 +30,13 @@ Now, edit your dev-client.js
 ```javascript
 // build/dev-client.js
 
-const webpackBrowserLog = require('webpack-browser-log'); // use webpack-browser-log
+const WebpackBrowserLog = require('webpack-browser-log'); // use webpack-browser-log
 const merge = require('webpack-merge'); // use webpack-merge
 const webpackDev = require('./webpack.dev'); // webpack dev config
 const base = require('./webpack.base'); // webpack base config
 const webpackConfig = merge(base,webpackDev); // merge base and dev
 
-new webpackBrowserLog(webpackConfig); // magic
+new WebpackBrowserLog(webpackConfig); // magic
 
 ```
 
