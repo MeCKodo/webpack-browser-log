@@ -47,7 +47,7 @@ $ node build/dev-client.js
 > Open your browser on http://localhost:3000. Let's coding
 
 
-[gif](./webpack-browser-log.gif)
+![gif](./webpack-browser-log.gif)
 
 
 ### Config
