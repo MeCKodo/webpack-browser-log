@@ -50,7 +50,6 @@ $ node build/dev-client.js
 
 ![gif](./webpack-browser-log.gif)
 
-
 ### Config
 
 Because of based on [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware#usage) and [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware#config). You can read their doc directly.Enjoy yourself
@@ -134,3 +133,23 @@ $ node build/dev-client.js
 此处有gif，没看见等一会
 
 ![gif](./webpack-browser-log.gif)
+
+### 配置选项
+
+由于使用了[webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware#usage) 和 [webpack-hot-middleware](https://github.com/glenjamin/webpack-hot-middleware#config). 所以你可以直接阅读他们的文档，然后按照如下修改
+
+```javascript
+new webpackBrowserLog(webpackConfig, {
+	port : 3000, // 修改启动端口，默认3000
+	devMiddleware : { // 默认配置了publicPath和quiet，你可以覆盖它
+		publicPath: webpackConfig.output.publicPath,
+		quiet: true
+	},
+	hotMiddleware : { // 默认配置了log，你可以覆盖它
+		log: () => {}
+	},
+	waitUntilValid : function () { } // 默认为空，这个是成功启动后的回调
+	// 目前只有这4个字段是你可配置的，在下觉得已经足够了
+	// new WebpackBrowserLog(webpackConfig); 最爽的就是直接这样
+});
+```
