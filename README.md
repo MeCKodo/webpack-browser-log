@@ -3,6 +3,8 @@
 
 > Based on webpack-hot-middleware and webpack-dev-middleware friendly log errors on your browser.
 
+> 中文文档在最下面
+
 ### Installing
 
 > npm i webpack-browser-log --save-dev;
@@ -46,7 +48,6 @@ $ node build/dev-client.js
 
 > Open your browser on http://localhost:3000. Let's coding
 
-
 ![gif](./webpack-browser-log.gif)
 
 
@@ -80,3 +81,56 @@ new webpackBrowserLog(webpackConfig, {
 4.Push to the branch: git push origin my-new-feature
 
 5.Submit a pull request :D
+
+---
+
+> 基于`webpack-hot-middleware`和`webpack-dev-middleware`，可以将你的错误友好的提示在浏览器上，无需切换命令行查看错误或者看浏览器的console面板
+
+### 安装
+
+> npm i webpack-browser-log --save-dev;
+
+### 如何使用
+
+首先, 把你的entry改成如下形式，每个页面入口都需要写成数组并且在最前面加`webpack-hot-middleware/client?reload=true`
+```javascript
+entry: {
+		index: ['webpack-hot-middleware/client?reload=true','./src/index.js'],
+		vendor: ['vue', 'vue-router', 'vuex'],
+	},
+```
+
+接着, 在你的plugin里加入2个插件
+```javascript
+plugins : [
+	new webpack.HotModuleReplacementPlugin(),
+	new webpack.NoEmitOnErrorsPlugin(),
+	//...
+]
+```
+
+完了以后，新建一个`dev-client.js`，复制如下代码
+```javascript
+// build/dev-client.js
+
+const WebpackBrowserLog = require('webpack-browser-log'); // 引入webpack-browser-log
+const merge = require('webpack-merge'); // 引入webpack-merge
+const webpackDev = require('./webpack.dev'); // 引入你webpack.dev的配置
+const base = require('./webpack.base'); // 引入你webpack base的配置
+const webpackConfig = merge(base,webpackDev); // 合并两配置
+
+new WebpackBrowserLog(webpackConfig); // 默认只需要传入需要启动的webpack配置就OK了
+
+```
+
+最后，运行这个文件
+
+```bash
+$ node build/dev-client.js
+```
+
+> 打开你的浏览器，http://localhost:3000. 把你的代码故意改错试试，在浏览器上就会提示错误了
+
+此处有gif，没看见等一会
+
+![gif](./webpack-browser-log.gif)
