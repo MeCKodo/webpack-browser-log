@@ -36,10 +36,9 @@ const WebpackBrowserLog = require('webpack-browser-log'); // use webpack-browser
 const merge = require('webpack-merge'); // use webpack-merge
 const webpackDev = require('./webpack.dev'); // webpack dev config
 const base = require('./webpack.base'); // webpack base config
-const webpackConfig = merge(base,webpackDev); // merge base and dev
+const webpackConfig = merge(base, webpackDev); // merge base and dev
 
 new WebpackBrowserLog(webpackConfig); // magic
-
 ```
 
 ```bash
@@ -57,6 +56,9 @@ Because of based on [webpack-dev-middleware](https://github.com/webpack/webpack-
 ```javascript
 new webpackBrowserLog(webpackConfig, {
 	port : 3000, // default
+	errorsPluginOptions: { // default
+    	// https://www.npmjs.com/package/friendly-errors-webpack-plugin#options
+  	},
 	devMiddleware : { // default
 		publicPath: webpackConfig.output.publicPath,
 		quiet: true
@@ -64,9 +66,13 @@ new webpackBrowserLog(webpackConfig, {
 	hotMiddleware : { // default
 		log: () => {}
 	},
-	waitUntilValid : function () { } // default
+	waitUntilValid : function () { }, // default
+	setup(app, express) {
+		// here you can get app express
+		// example
+        app.use('/static', express.static('./static'));
+  	},
 });
-
 ```
 
 ### Contributing
