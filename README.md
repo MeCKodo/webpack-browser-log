@@ -14,9 +14,9 @@
 First, add `webpack-hot-middleware/client` into the entry array.Such as
 ```javascript
 entry: {
-		index: ['webpack-hot-middleware/client?reload=true','./src/index.js'],
-		vendor: ['vue', 'vue-router', 'vuex'],
-	},
+	index: ['webpack-hot-middleware/client?reload=true','./src/index.js'],
+	vendor: ['vue', 'vue-router', 'vuex'],
+},
 ```
 
 Next, add the following plugins to the plugins array:
@@ -100,9 +100,9 @@ new webpackBrowserLog(webpackConfig, {
 首先, 把你的entry改成如下形式，每个页面入口都需要写成数组并且在最前面加`webpack-hot-middleware/client?reload=true`
 ```javascript
 entry: {
-		index: ['webpack-hot-middleware/client?reload=true','./src/index.js'],
-		vendor: ['vue', 'vue-router', 'vuex'],
-	},
+	index: ['webpack-hot-middleware/client?reload=true','./src/index.js'],
+	vendor: ['vue', 'vue-router', 'vuex'],
+},
 ```
 
 接着, 在你的plugin里加入2个插件
@@ -147,6 +147,9 @@ $ node build/dev-client.js
 ```javascript
 new webpackBrowserLog(webpackConfig, {
 	port : 3000, // 修改启动端口，默认3000
+	errorsPluginOptions: { // default
+		// https://www.npmjs.com/package/friendly-errors-webpack-plugin#options
+	},
 	devMiddleware : { // 默认配置了publicPath和quiet，你可以覆盖它
 		publicPath: webpackConfig.output.publicPath,
 		quiet: true
@@ -154,8 +157,12 @@ new webpackBrowserLog(webpackConfig, {
 	hotMiddleware : { // 默认配置了log，你可以覆盖它
 		log: () => {}
 	},
-	waitUntilValid : function () { } // 默认为空，这个是成功启动后的回调
+	waitUntilValid : function () { }, // 默认为空，这个是成功启动后的回调
 	// 目前只有这4个字段是你可配置的，在下觉得已经足够了
 	// new WebpackBrowserLog(webpackConfig); 最爽的就是直接这样
+	setup(app, express) {
+		// 注册别的中间件
+		app.use('/static', express.static('./static'));
+	},
 });
 ```
